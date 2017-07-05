@@ -51,20 +51,30 @@
                                 </constraints>
                             </stackView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="DTI-Z1-MRP">
-                                <rect key="frame" x="16" y="130" width="320" height="320"/>
+                                <rect key="frame" x="16" y="130" width="343" height="343"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="DTI-Z1-MRP" secondAttribute="height" multiplier="1:1" id="kqj-hq-J9O"/>
-                                    <constraint firstAttribute="width" constant="320" id="oC6-ox-OyL"/>
-                                    <constraint firstAttribute="height" constant="320" id="yGE-lT-TfE"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="PpB-az-w6d" appends="YES" id="eFh-cG-SXx"/>
                                 </connections>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lST-Bf-lmH" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                <rect key="frame" x="16" y="481" width="182" height="30"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="starSize">
+                                        <size key="value" width="30" height="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="lST-Bf-lmH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8rY-q0-jSa"/>
                             <constraint firstItem="CEG-ci-vso" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="A9o-m4-cS3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CEG-ci-vso" secondAttribute="trailing" id="B9B-mC-v3S"/>
                             <constraint firstItem="DTI-Z1-MRP" firstAttribute="top" secondItem="CEG-ci-vso" secondAttribute="bottom" constant="8" id="BdZ-dn-gX5"/>
@@ -72,6 +82,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="DTI-Z1-MRP" secondAttribute="trailing" id="ZOK-aw-4rm"/>
                             <constraint firstItem="DTI-Z1-MRP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="iQW-27-YaZ"/>
                             <constraint firstItem="CEG-ci-vso" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="suI-cn-RIU"/>
+                            <constraint firstItem="lST-Bf-lmH" firstAttribute="top" secondItem="DTI-Z1-MRP" secondAttribute="bottom" constant="8" id="t6M-gl-dJr"/>
                         </constraints>
                     </view>
                     <connections>
