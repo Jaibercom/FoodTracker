@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  FoodTracker
 //
-//  Created by MacPC on 6/29/17.
+//  Created by Jaiber on 6/29/17.
 //  Copyright © 2017 SoftSolutions. All rights reserved.
 //
 
@@ -24,12 +24,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         nameTextField.delegate = self
         
     }
-/*
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-*/
     
     //MARK: Actions
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
@@ -63,6 +57,26 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         mealNameLabel.text = textField.text
+    }
+    
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismis the picker if the user canceled
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        guard let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        
+        // Set photoImageView to display the selected image.
+        photoImageView.image = selectedImage
+        
+        // Dismiss the picker.
+        dismiss(animated: true, completion: nil)
     }
     
     
