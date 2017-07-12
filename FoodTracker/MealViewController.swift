@@ -34,6 +34,15 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
         // Handle the text field's user input througt delegate callbacks
         nameTextField.delegate = self
         
+        // Set up views if editing an existing Meal.
+        if let meal = meal {
+            navigationItem.title = meal.name
+            nameTextField.text   = meal.name
+            photoImageView.image = meal.photo
+            ratingControl.rating = meal.rating
+        }
+        
+        
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
         
@@ -43,8 +52,23 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         
-        dismiss(animated: true, completion: nil)
+        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+                
+        if isPresentingInAddMealMode {
+            // works when the user is adding a new meal
+            dismiss(animated: true, completion: nil)
+        }
+        else if let owningNavigationController = navigationController{
+            //The else block is called if the user is editing an existing meal
+            owningNavigationController.popViewController(animated: true)
+        }
+        else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+        
     }
+    
     
     // This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -128,7 +152,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     }
     
     
-    //MARK: Private Methods comment
+    //MARK: Private Methods 
     
     private func updateSaveButtonState() {
         
