@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Meal View Controller-->
+        <!--New Meal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MealViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="CEG-ci-vso">
-                                <rect key="frame" x="16" y="20" width="343" height="435"/>
+                                <rect key="frame" x="16" y="70" width="343" height="435"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Boa-iZ-DUn">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -53,19 +53,28 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CEG-ci-vso" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="A9o-m4-cS3"/>
+                            <constraint firstItem="CEG-ci-vso" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="70" id="A9o-m4-cS3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CEG-ci-vso" secondAttribute="trailing" id="B9B-mC-v3S"/>
                             <constraint firstItem="CEG-ci-vso" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="suI-cn-RIU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="qQg-3O-3ri"/>
+                    <navigationItem key="navigationItem" title="New Meal" id="qQg-3O-3ri">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fNM-HH-p75"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="IRj-qW-5my">
+                            <connections>
+                                <segue destination="YtZ-Mf-Ui9" kind="unwind" unwindAction="unwindToMealListWithSender:" id="jP2-K6-gkQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="Boa-iZ-DUn" id="QBz-s0-mG4"/>
                         <outlet property="photoImageView" destination="DTI-Z1-MRP" id="pGc-MQ-aXf"/>
                         <outlet property="ratingControl" destination="lST-Bf-lmH" id="Tr2-Gw-FWe"/>
+                        <outlet property="saveButton" destination="IRj-qW-5my" id="yt4-5U-Yud"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="YtZ-Mf-Ui9" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="PpB-az-w6d">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="ymj-ow-H5g"/>
